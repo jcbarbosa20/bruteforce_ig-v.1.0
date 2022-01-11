@@ -4,7 +4,7 @@ import time
 from random import choice
 import string
 
-username = input('Username: ')
+user = input('Username: ')
 
 ## Variáveis de controle
 web = Browser()
@@ -23,7 +23,7 @@ time.sleep(5)
 keyboard.press(Key.tab)
 keyboard.release(Key.tab)
 time.sleep(5)
-web.type(username)
+web.type(user)
 keyboard.press(Key.tab)
 keyboard.release(Key.tab)
 
